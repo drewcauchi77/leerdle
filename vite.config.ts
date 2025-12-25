@@ -5,7 +5,7 @@ import laravel from 'laravel-vite-plugin';
 import { defineConfig } from 'vite';
 import { nativephpMobile, nativephpHotFile } from './vendor/nativephp/mobile/resources/js/vite-plugin.js';
 
-export default defineConfig(({ mode }) => ({
+export default defineConfig(() => ({
     server: {
         host: '0.0.0.0',
         port: 5173,

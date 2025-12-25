@@ -9,6 +9,6 @@ import { Head, Link } from '@inertiajs/vue3';
     </Head>
     <div class="mt-16">
         <h1 class="font-bold">Home</h1>
-        <Link href="/about">Go to About</Link>
+        <Link href="/about">Go to About 22</Link>
     </div>
 </template>
