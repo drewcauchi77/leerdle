@@ -77,7 +77,8 @@
             "@t:types",
             "@t:unit",
             "@t:coverage"
-        ]
+        ],
+        "a:watch": "@php artisan native:watch android"
     },
     "extra": {
         "laravel": {
