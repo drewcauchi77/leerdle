@@ -7,6 +7,7 @@ namespace App\Http\Middleware;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
+use Native\Mobile\Facades\System;
 
 final class HandleInertiaRequests extends Middleware
 {
@@ -42,6 +43,11 @@ final class HandleInertiaRequests extends Middleware
 
         return [
             ...parent::share($request),
+            'device' => [
+                'is_mobile' => System::isMobile(),
+                'is_ios' => System::isIOS(),
+                'is_android' => System::isAndroid(),
+            ],
             'name' => config('app.name'),
             'quote' => ['message' => mb_trim((string) $message), 'author' => mb_trim((string) $author)],
             'auth' => [
