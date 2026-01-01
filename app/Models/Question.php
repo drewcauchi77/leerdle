@@ -21,9 +21,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  */
 final class Question extends Model
 {
-    /** @use HasFactory<QuestionFactory> */
+    /**
+     * @use HasFactory<QuestionFactory>
+     */
     use HasFactory;
 
+    /**
+     * @return BelongsTo<Exercise, $this>
+     */
     public function exercise(): BelongsTo
     {
         return $this->belongsTo(Exercise::class);

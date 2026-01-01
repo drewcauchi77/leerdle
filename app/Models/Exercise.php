@@ -25,6 +25,9 @@ final class Exercise extends Model
     /** @use HasFactory<ExerciseFactory> */
     use HasFactory;
 
+    /**
+     * @return HasMany<Question, $this>
+     */
     public function questions(): HasMany
     {
         return $this->hasMany(Question::class);

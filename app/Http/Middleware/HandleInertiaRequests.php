@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Http\Middleware;
 
-use Illuminate\Foundation\Inspiring;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 use Native\Mobile\Facades\System;
@@ -39,8 +38,6 @@ final class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
-        [$message, $author] = str(Inspiring::quotes()->random())->explode('-');
-
         return [
             ...parent::share($request),
             'device' => [
@@ -48,8 +45,6 @@ final class HandleInertiaRequests extends Middleware
                 'is_ios' => System::isIOS(),
                 'is_android' => System::isAndroid(),
             ],
-            'name' => config('app.name'),
-            'quote' => ['message' => mb_trim((string) $message), 'author' => mb_trim((string) $author)],
             'auth' => [
                 'user' => $request->user(),
             ],
