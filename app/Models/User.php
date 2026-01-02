@@ -23,6 +23,7 @@ final class User extends Authenticatable
 {
     use HasFactory;
     use Notifiable;
+
     /**
      * @var list<string>
      */

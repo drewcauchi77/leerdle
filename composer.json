@@ -65,21 +65,25 @@
             "./vendor/bin/rector",
             "npm run lint"
         ],
-        "t:coverage": "./vendor/bin/pest --type-coverage --min=100",
-        "t:unit": "./vendor/bin/pest --parallel --coverage --exactly=100.0",
         "t:lint": [
             "./vendor/bin/pint --parallel --test",
             "./vendor/bin/rector --dry-run",
             "npm run lint:check"
         ],
+        "t:unit": "./vendor/bin/pest --parallel --coverage --exactly=100.0",
         "t:types": "./vendor/bin/phpstan analyse --memory-limit=2G",
+        "t:coverage": "./vendor/bin/pest --type-coverage --min=100",
+        "t:test": [
+            "@t:types",
+            "@t:unit",
+            "@t:coverage"
+        ],
         "t": [
             "@t:lint",
             "@t:types",
             "@t:unit",
             "@t:coverage"
-        ],
-        "a:watch": "@php artisan native:watch android"
+        ]
     },
     "extra": {
         "laravel": {
