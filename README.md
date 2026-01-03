@@ -12,30 +12,33 @@
 
 ## Development Setup
 
+The application supports simultaneous web and mobile development with isolated build configurations.
+
 ### Web Development
 
-For web development, the application uses Inertia.js with props-based data flow.
+For web development, the application uses Inertia.js with Vue 3 and props-based data flow.
 
-1. **Start the Laravel server:**
+1. **Start the Vite dev server (port 5174):**
    ```bash
-   php artisan serve
+   npm run dev:web
    ```
+
+2. **Access the application:**
+   - Via Laravel Herd: [https://leerdle.test](https://leerdle.test)
+   - Via artisan serve: [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
 
    > **Note for Herd users:** Ensure `variables_order = "GPCS"` is set in your `php.ini` file.
 
-2. **Expose API via ngrok:**
+3. **Build for production:**
+   ```bash
+   npm run build:web
+   ```
+   Outputs to `public/build-web/`
+
+4. **Expose API via ngrok (if needed):**
    ```bash
    ngrok http --url=allowed-monster-splendid.ngrok-free.app 8000
    ```
-
-3. **Build and watch frontend assets:**
-   ```bash
-   npm run build
-   npm run dev
-   ```
-
-4. **Access the application:**
-   Open [http://127.0.0.1:8000/](http://127.0.0.1:8000/) in your browser.
 
 ### Android/Mobile Development
 
@@ -43,21 +46,52 @@ For mobile development, the application uses NativePHP Mobile with a monolith AP
 
 1. **Open Android Studio emulator** before running commands.
 
-2. **Build frontend for Android:**
+2. **Start the Vite dev server (port 5173):**
    ```bash
-   npm run build -- --mode=android
+   npm run dev:android
    ```
+   Creates `public/android-hot` for hot module replacement on the emulator.
 
-3. **Watch and sync changes:**
+   **Alternative:** Use NativePHP's watcher (recommended):
    ```bash
    php artisan native:watch android
    ```
 
-4. **Run the Android emulator:**
+3. **Run the Android app:**
    ```bash
-   php artisan native:run
+   php artisan native:run android
    ```
    This command will automatically launch the Android emulator if not already running.
+
+4. **Build for production:**
+   ```bash
+   npm run build:android
+   ```
+   Outputs to `public/build/`
+
+### Simultaneous Web & Mobile Development
+
+You can develop for both platforms at the same time by running the following in separate terminals:
+
+**Terminal 1 - Web:**
+```bash
+npm run dev:web
+```
+
+**Terminal 2 - Mobile:**
+```bash
+npm run dev:android
+# or: php artisan native:watch android
+```
+
+**Terminal 3 - Run Android App:**
+```bash
+php artisan native:run android
+```
+
+Each environment uses isolated build outputs:
+- **Web**: Port 5174 → `public/build-web/`
+- **Mobile**: Port 5173 → `public/build/` with `android-hot` HMR file
 
 ## Debugging
 

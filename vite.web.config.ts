@@ -5,19 +5,21 @@ import tailwindcss from '@tailwindcss/vite';
 import vue from '@vitejs/plugin-vue';
 import laravel from 'laravel-vite-plugin';
 import { defineConfig, UserConfig } from 'vite';
-import { nativephpMobile, nativephpHotFile } from './vendor/nativephp/mobile/resources/js/vite-plugin.js';
 
 export default defineConfig((): UserConfig => ({
+    build: {
+        outDir: 'public/build-web',
+        manifest: 'manifest.json',
+        emptyOutDir: true,
+    },
     server: {
         host: '0.0.0.0',
-        port: 5173,
+        port: 5174,
         strictPort: true,
-        origin: 'http://10.5.0.2:5173',
         hmr: {
-            host: '10.5.0.2',
+            host: '127.0.0.1',
             protocol: 'ws',
-            port: 5173,
-            clientPort: 5173,
+            port: 5174,
         },
         cors: true,
     },
@@ -26,10 +28,9 @@ export default defineConfig((): UserConfig => ({
             input: ['resources/js/app.ts'],
             ssr: 'resources/js/ssr.ts',
             refresh: true,
-            hotFile: nativephpHotFile(),
+            buildDirectory: 'build-web',
         }),
         tailwindcss(),
-        nativephpMobile(),
         vue({
             template: {
                 transformAssetUrls: {

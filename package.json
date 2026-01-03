@@ -4,8 +4,12 @@
     "type": "module",
     "scripts": {
         "build": "vite build",
+        "build:web": "vite build --config vite.web.config.ts",
+        "build:android": "vite build -- --mode=android",
         "build:ssr": "vite build && vite build --ssr",
         "dev": "vite",
+        "dev:web": "vite --config vite.web.config.ts",
+        "dev:android": "vite --mode=android",
         "format": "prettier --write resources/",
         "format:check": "prettier --check resources/",
         "lint": "eslint . --fix",
