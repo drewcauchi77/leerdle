@@ -29,7 +29,7 @@ test('shares all data correctly with authenticated user', function (): void {
         ->toHaveKeys([
             'device',
             'auth',
-            'errors'
+            'errors',
         ])
         ->and($shared['device'])
         ->toBe([
