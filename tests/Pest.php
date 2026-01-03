@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Pest\Expectation;
 use Tests\TestCase;
 
 /*
@@ -32,7 +33,7 @@ pest()->extend(TestCase::class)
 |
 */
 
-expect()->extend('toBeOne', fn () => $this->toBe(1));
+expect()->extend('toBeOne', fn (Expectation $expectation): Pest\Mixins\Expectation => $expectation->toBe(1));
 
 /*
 |--------------------------------------------------------------------------

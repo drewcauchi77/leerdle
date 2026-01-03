@@ -23,7 +23,7 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
     })
     ->withRouting(
-        using: function () {
+        using: function (): void {
             Route::middleware('api')
                 ->prefix('api/v1')
                 ->group(base_path('routes/api_v1.php'));

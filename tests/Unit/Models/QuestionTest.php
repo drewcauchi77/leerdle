@@ -29,7 +29,8 @@ test('question belongs to exercise', function (): void {
 
     expect($question->exercise)
         ->toBeInstanceOf(Exercise::class)
-        ->and($question->exercise->id)->toBe($exercise->id);
+        ->and($question->exercise?->id)
+        ->toBe($exercise->id);
 });
 
 test('question has exercise relationship', function (): void {

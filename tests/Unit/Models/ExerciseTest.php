@@ -28,10 +28,11 @@ test('exercise has many questions', function (): void {
         ->has(Question::factory(10))
         ->create();
 
-    expect($exercise->questions)
-        ->toHaveCount(10)
-        ->each
-        ->toBeInstanceOf(Question::class);
+    expect($exercise->questions)->toHaveCount(10);
+
+    foreach ($exercise->questions as $question) {
+        expect($question)->toBeInstanceOf(Question::class);
+    }
 });
 
 test('exercise has question relationship', function (): void {
