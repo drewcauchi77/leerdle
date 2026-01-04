@@ -1,4 +1,11 @@
 {
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:nativephp.com)",
+      "Bash(composer t:types:*)"
+    ]
+  },
   "enabledMcpjsonServers": [
     "laravel-boost",
     "herd"

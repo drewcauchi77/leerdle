@@ -2,7 +2,10 @@
 /bootstrap/ssr
 /node_modules
 /public/build
+/public/build-web
 /public/hot
+/public/ios-hot
+/public/android-hot
 /public/storage
 /resources/js/actions
 /resources/js/routes
