@@ -9,7 +9,7 @@ const error = ref(null);
 
 const dataFromApi = async () => {
     try {
-        const res = await fetch('https://allowed-monster-splendid.ngrok-free.app/api/test', {
+        const res = await fetch('https://allowed-monster-splendid.ngrok-free.app/api/v1/test', {
             headers: {
                 'ngrok-skip-browser-warning': 'true',
                 'Accept': 'application/json'
