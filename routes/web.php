@@ -2,9 +2,15 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\Exercise\ExerciseFormatController;
+use App\Http\Controllers\Exercise\ExerciseLanguageController;
+use App\Http\Controllers\Exercise\ExerciseSubjectController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::get('/', fn () => Inertia::render('Home'))->name('home');
+Route::get('/', fn () => Inertia::render('Home', []))->name('home');
 
-Route::get('/about', fn () => Inertia::render('About'))->name('about');
+Route::get('/exercises', [ExerciseLanguageController::class, 'index'])->name('exercises.index');
+Route::get('/exercises/{language}', [ExerciseLanguageController::class, 'show'])->name('languages.show');
+Route::get('/exercises/{language}/{format}', [ExerciseFormatController::class, 'show'])->name('formats.show');
+Route::get('/exercises/{language}/{format}/{subject}', [ExerciseSubjectController::class, 'show'])->name('subjects.show');

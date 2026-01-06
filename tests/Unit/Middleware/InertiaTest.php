@@ -30,8 +30,12 @@ test('shares all data correctly with authenticated user', function (): void {
             'device',
             'auth',
             'errors',
-        ])
-        ->and($shared['device'])
+        ]);
+
+    /** @var callable(): array{is_mobile: bool, is_ios: bool, is_android: bool} $deviceCallable */
+    $deviceCallable = $shared['device'];
+
+    expect($deviceCallable())
         ->toBe([
             'is_mobile' => true,
             'is_ios' => true,
@@ -50,16 +54,6 @@ test('shares all data correctly with authenticated user', function (): void {
 });
 
 test('shares null user when not authenticated', function (): void {
-    System::shouldReceive('isMobile')
-        ->once()
-        ->andReturn(false);
-    System::shouldReceive('isIOS')
-        ->once()
-        ->andReturn(false);
-    System::shouldReceive('isAndroid')
-        ->once()
-        ->andReturn(false);
-
     $request = Request::create('/');
 
     $middleware = new HandleInertiaRequests();

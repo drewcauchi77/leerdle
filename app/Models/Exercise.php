@@ -6,6 +6,7 @@ namespace App\Models;
 
 use App\Enums\ExerciseFormat;
 use App\Enums\ExerciseLanguage;
+use App\Enums\ExerciseSubject;
 use Carbon\CarbonInterface;
 use Database\Factories\ExerciseFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -17,6 +18,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property-read string $title
  * @property-read string $description
  * @property-read CarbonInterface $available_at
+ * @property-read ExerciseFormat $format
+ * @property-read ExerciseLanguage $language
+ * @property-read ExerciseSubject $subject
  * @property-read CarbonInterface $created_at
  * @property-read CarbonInterface $updated_at
  */
@@ -45,6 +49,7 @@ final class Exercise extends Model
             'available_at' => 'datetime',
             'format' => ExerciseFormat::class,
             'language' => ExerciseLanguage::class,
+            'subject' => ExerciseSubject::class,
             'created_at' => 'datetime',
             'updated_at' => 'datetime',
         ];

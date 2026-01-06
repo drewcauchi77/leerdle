@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Middleware;
 
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 use Inertia\Middleware;
 use Native\Mobile\Facades\System;
 
@@ -27,14 +28,14 @@ final class HandleInertiaRequests extends Middleware
     {
         return [
             ...parent::share($request),
-            'device' => [
-                'is_mobile' => System::isMobile(),
-                'is_ios' => System::isIOS(),
-                'is_android' => System::isAndroid(),
-            ],
             'auth' => [
                 'user' => $request->user(),
             ],
+            'device' => Inertia::once(fn (): array => [
+                'is_mobile' => System::isMobile(),
+                'is_ios' => System::isIOS(),
+                'is_android' => System::isAndroid(),
+            ]),
         ];
     }
 }

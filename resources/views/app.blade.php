@@ -22,17 +22,11 @@
         @endif
         @inertiaHead
     </head>
-    <body class="font-sans antialiased nativephp-safe-area">
+    <body @class(['font-sans antialiased', 'nativephp-safe-area' => System::isMobile()])>
         @inertia
 
         @if(System::isMobile())
-            @verbatim
-                <native:bottom-nav>
-                    <native:bottom-nav-item id="home" icon="home" label="Home" url="/" />
-                    <native:bottom-nav-item id="about" icon="user" label="about" url="/about" />
-                    <native:bottom-nav-item id="test" icon="flashlight_on" label="test" url="/" />
-                </native:bottom-nav>
-            @endverbatim
+            @include('native-components.bottom-nav')
         @endif
     </body>
 </html>

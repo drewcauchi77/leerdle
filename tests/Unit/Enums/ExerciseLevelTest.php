@@ -4,6 +4,10 @@ declare(strict_types=1);
 
 use App\Enums\ExerciseLevel;
 
+test('has correct amount of values', function (): void {
+    expect(ExerciseLevel::cases())->toHaveLength(6);
+});
+
 test('has correct integer values', function (): void {
     expect(ExerciseLevel::A1->value)->toBe(1)
         ->and(ExerciseLevel::A2->value)->toBe(2)
