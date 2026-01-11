@@ -13,7 +13,7 @@ const props = defineProps({
 <template>
     <Head title="Exercises"></Head>
     <div class="mt-16">
-        <h1 class="text-4xl my-10">/exercises/{{ props.language }}/{{ props.format }}</h1>
+        <h1 class="text-4xl my-10">/{{ props.language }}/exercises/{{ props.format }}</h1>
 
         <pre>{{ props.subjects }}</pre>
 

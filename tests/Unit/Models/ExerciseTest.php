@@ -16,6 +16,7 @@ test('to array', function (): void {
             'description',
             'format',
             'language',
+            'subject',
             'level',
             'available_at',
             'created_at',

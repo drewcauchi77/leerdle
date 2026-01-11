@@ -8,6 +8,6 @@ import { index } from '@/actions/App/Http/Controllers/Exercise/ExerciseLanguageC
     <div class="mt-16">
         <h1 class="text-4xl my-10">/</h1>
 
-        <Link :href="index()" class="underline">Exercises</Link>
+        <Link href="/nl" class="underline">NL</Link>
     </div>
 </template>

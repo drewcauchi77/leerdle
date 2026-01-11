@@ -12,10 +12,11 @@ use Inertia\Response;
 
 final class ExerciseLanguageController extends Controller
 {
-    public function index(): Response
+    public function index(string $language): Response
     {
         return Inertia::render('Exercise/IndexPage', [
-            'languages' => collect(ExerciseLanguage::cases())->map(fn ($format): array => [
+            'language' => $language,
+            'formats' => collect(ExerciseFormat::cases())->map(fn ($format): array => [
                 'value' => $format->value,
                 'name' => $format->name,
                 'slug' => $format->slug(),
@@ -27,11 +28,6 @@ final class ExerciseLanguageController extends Controller
     {
         return Inertia::render('Exercise/ShowPage', [
             'language' => $language,
-            'formats' => collect(ExerciseFormat::cases())->map(fn ($format): array => [
-                'value' => $format->value,
-                'name' => $format->name,
-                'slug' => $format->slug(),
-            ]),
         ]);
     }
 }
