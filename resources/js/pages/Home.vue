@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { Head, Link } from '@inertiajs/vue3';
-import { index } from '@/actions/App/Http/Controllers/Exercise/ExerciseLanguageController';
 </script>
 
 <template>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Head, Link } from '@inertiajs/vue3';
-import { show } from '@/actions/App/Http/Controllers/Exercise/ExerciseSubjectController';
+import { index } from '@/actions/App/Http/Controllers/ExerciseController';
 
 // PROPS AND API CALL
 const props = defineProps({
@@ -18,8 +18,8 @@ const props = defineProps({
         <pre>{{ props.subjects }}</pre>
 
         <ul>
-            <li v-for="(subject, index) in props.subjects" :key="index">
-                <Link :href="show({ language: props.language, format: props.format, subject: subject.slug })">
+            <li v-for="(subject, i) in props.subjects" :key="i">
+                <Link :href="index({ language: props.language, format: props.format, subject: subject.slug })">
                     {{ subject.name }}
                 </Link>
             </li>

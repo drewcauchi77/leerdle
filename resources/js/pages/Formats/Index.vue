@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Head, Link } from '@inertiajs/vue3';
-import { show } from '@/actions/App/Http/Controllers/Exercise/ExerciseFormatController';
+import { index } from '@/actions/App/Http/Controllers/SubjectController';
 
 // PROPS AND API CALL
 const props = defineProps({
@@ -17,8 +17,8 @@ const props = defineProps({
         <pre>{{ props.formats }}</pre>
 
         <ul>
-            <li v-for="(format, index) in props.formats" :key="index">
-                <Link :href="show({ language: props.language, format: format.slug })">
+            <li v-for="(format, i) in props.formats" :key="i">
+                <Link :href="index({ language: props.language, format: format.slug })">
                     {{ format.name }}
                 </Link>
             </li>
