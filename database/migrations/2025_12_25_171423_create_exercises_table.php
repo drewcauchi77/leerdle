@@ -16,6 +16,7 @@ return new class extends Migration
             $table->text('description');
             $table->integer('format');
             $table->integer('language');
+            $table->integer('subject');
             $table->integer('level');
             $table->date('available_at');
             $table->timestamps();
